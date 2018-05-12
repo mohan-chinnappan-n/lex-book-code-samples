@@ -1,7 +1,22 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome"
                 access="global" >
 
-    <aura:attribute name="greeting" type="String" default="Hello World"/> 
+    <aura:attribute name="greeting" type="String" default="Hello World"/>
     <lightning:button label="{!v.greeting}" onclick="{!c.changeGreeting}" />
+
+    <lightning:buttonMenu iconName="utility:settings" alternativeText="Settings"
+                          onselect="{! c.handleLangMenuSelect }">
+        <lightning:menuItem label="English" value="en" />
+        <lightning:menuItem label="Tamil"   value="ta"/>
+        <lightning:menuItem label="Hindi"   value="hi"/>
+        <lightning:menuItem label="Malayalam"   value="ml" />
+        <lightning:menuItem label="French"  value="fr"/>
+        <lightning:menuItem label="Spanish" value="es" />
+        <lightning:menuItem label="Italian" value="it" />
+        <lightning:menuItem label="Urdu"    value="ur" />
+        <lightning:menuItem label="Kannada"  value="kn" />
+        <lightning:menuItem label="Telugu"   value="te" />
+    </lightning:buttonMenu>
+
 
 </aura:component>
