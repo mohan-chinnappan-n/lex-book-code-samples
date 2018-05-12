@@ -32,6 +32,18 @@
         component.set("v.numClicks", currentNumClicks)
 
 
-    }
+    },
+
+
+    // handles the buttonGroup button onclick event
+    showLove: function(component, event) {
+        var item = event.getSource().getLocalId();
+        var type = '.png';
+        if (item === 'baby-donkey-1') type = '.gif';
+        var imgSrcBase = "https://raw.githubusercontent.com/mohan-chinnappan-n/lex-book-code-samples/master/Greeter-2/img/l-";
+        var imgSrc = imgSrcBase + item + type;
+        component.set("v.imgsrc",imgSrc);
+    },
+
 
 })

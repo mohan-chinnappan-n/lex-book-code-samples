@@ -6,6 +6,9 @@
 
 
     <aura:attribute name="greeting" type="String" default="Hello World"/>
+    <aura:attribute name="imgsrc" type="String"
+                    default="https://raw.githubusercontent.com/mohan-chinnappan-n/lex-book-code-samples/master/Greeter-2/img/l-donkey.png"/>
+
 
     <!-- buttonIconStateful  and badge -->
     <aura:attribute name="numClicks" type="Integer" default="0"/>
@@ -17,11 +20,13 @@
 
     <lightning:card title="Greeter"
                     iconName="standard:account" footer="">
+        <p>lightning:card <hr/></p>
         <!-- button   -->
         <lightning:button label="{!v.greeting}" onclick="{!c.changeGreeting}" />
 
         <aura:set attribute="actions">
             <!-- buttonMenu   -->
+            <p>lightning:buttonMenu</p>
             <lightning:buttonMenu iconName="utility:settings"
 
                                   alternativeText="Lang Settings"
@@ -41,6 +46,8 @@
         <!-- card body -->
         <p class="slds-p-horizontal_small">
             <br/>
+            <p>lightning:buttonIconStateful</p>
+
             <lightning:buttonIconStateful iconName="utility:like"
                                           selected="{!v.liked}"
                                           alternativeText="Like"
@@ -50,13 +57,30 @@
 
             <!-- buttonGroup -->
             <hr/>
+            <h4>lightning:buttonGroup</h4>
             <lightning:buttonGroup>
-                <lightning:button label="Donkey" onclick="{!c.showDonkeyLove}"/>
-                <lightning:button label="Goat"   onclick="{!c.showGoatLove}"/>
-                <lightning:button label="Cow"    onclick="{!c.showCowLove}"/>
+                <lightning:button label="Donkey"  aura:id="donkey"  variant="brand" onclick="{!c.showLove}"/>
+                <lightning:button label="Donkey-2"  aura:id="baby-donkey-1"  onclick="{!c.showLove}"/>
+                <lightning:button label="Cow"     aura:id="cow"     onclick="{!c.showLove}"/>
+                <lightning:button label="Mule"    aura:id="mule"    onclick="{!c.showLove}"/>
+                <lightning:button label="Horse"   aura:id="horse"   onclick="{!c.showLove}"/>
+                <lightning:button label="Goat-1"  aura:id="goat-1"  onclick="{!c.showLove}"/>
+                <lightning:button label="Goat-2"  aura:id="goat-2"  onclick="{!c.showLove}"/>
+                <lightning:button label="Peacock" aura:id="peacock-1"  onclick="{!c.showLove}"/>
+                 <lightning:buttonIcon iconName="utility:close"
+                           aura:id="donkey"
+                           variant="brand"
+                           onclick="{! c.showLove }"
+                           alternativeText="Show Donkey please!" />
             </lightning:buttonGroup>
+            <br/>
+
+            <img src="{!v.imgsrc}"/>
         </p>
     </lightning:card>
+
+
+
 
 
 
