@@ -1,9 +1,11 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome"
                 access="global" >
 
+     <!-- button   -->
     <aura:attribute name="greeting" type="String" default="Hello World"/>
     <lightning:button label="{!v.greeting}" onclick="{!c.changeGreeting}" />
 
+     <!-- buttonMenu   -->
     <lightning:buttonMenu iconName="utility:settings" alternativeText="Settings"
                           onselect="{! c.handleLangMenuSelect }">
         <lightning:menuItem label="English" value="en" />
@@ -18,5 +20,13 @@
         <lightning:menuItem label="Telugu"   value="te" />
     </lightning:buttonMenu>
 
+    <!-- buttonIconStateful  and badge -->
+    <aura:attribute name="numClicks" type="Integer" default="0"/>
+    <aura:attribute name="liked" type="Boolean" default="true"/>
 
+    <lightning:buttonIconStateful iconName="utility:like"
+                                  selected="{!v.liked}"
+                                  alternativeText="Like"
+                                  onclick="{! c.handleLikedToggle }"/>
+    <lightning:badge label="{!v.numClicks}" />
 </aura:component>

@@ -19,7 +19,19 @@
     },
     //onselect handler for the buttonMenu
     handleLangMenuSelect: function(component, event, helper) {
-     helper.updateGreetingGivenLang(component, event);
+        helper.updateGreetingGivenLang(component, event);
 
-   }
+    },
+
+    // handles the buttonIconStateful on select event
+    handleLikedToggle : function (component, event) {
+        var liked = component.get("v.liked");
+        component.set("v.liked", !liked);
+        var currentNumClicks = component.get("v.numClicks");
+        currentNumClicks++;
+        component.set("v.numClicks", currentNumClicks)
+
+
+    }
+
 })
