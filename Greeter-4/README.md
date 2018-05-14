@@ -1,3 +1,3 @@
 ## Greeter-4
 
-![Demo](imgs/lex-component-build-3.gif)
+![Demo](img/lex-component-build-3.gif)
