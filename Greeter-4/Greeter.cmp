@@ -1,0 +1,237 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome"
+                access="global" >
+
+
+
+
+
+    <aura:attribute name="greeting" type="String" default="Hello World"/>
+    <aura:attribute name="imgsrc" type="String"
+                    default="https://raw.githubusercontent.com/mohan-chinnappan-n/lex-book-code-samples/master/Greeter-2/img/l-donkey.png"/>
+
+
+    <!-- buttonIconStateful  and badge -->
+    <aura:attribute name="numClicks" type="Integer" default="0"/>
+    <aura:attribute name="liked" type="Boolean" default="true"/>
+
+    <!-- INIT -->
+     <aura:handler name="init" value="{! this }" action="{! c.cmpInit }"/>
+
+
+    <lightning:card title="Greeter"
+                    iconName="standard:account" footer="">
+        <p>lightning:card <hr/></p>
+        <!-- button   -->
+        <lightning:button label="{!v.greeting}" onclick="{!c.changeGreeting}" />
+
+        <aura:set attribute="actions">
+            <!-- buttonMenu   -->
+            <p>lightning:buttonMenu</p>
+            <lightning:buttonMenu iconName="utility:settings"
+
+                                  alternativeText="Lang Settings"
+                                  onselect="{! c.handleLangMenuSelect }">
+                <lightning:menuItem label="English" value="en" />
+                <lightning:menuItem label="Tamil"   value="ta"/>
+                <lightning:menuItem label="Hindi"   value="hi"/>
+                <lightning:menuItem label="Malayalam"   value="ml" />
+                <lightning:menuItem label="French"  value="fr"/>
+                <lightning:menuItem label="Spanish" value="es" />
+                <lightning:menuItem label="Italian" value="it" />
+                <lightning:menuItem label="Urdu"    value="ur" />
+                <lightning:menuItem label="Kannada"  value="kn" />
+                <lightning:menuItem label="Telugu"   value="te" />
+            </lightning:buttonMenu>
+        </aura:set>
+        <!-- card body -->
+        <p class="slds-p-horizontal_small">
+            <br/>
+            <p>lightning:buttonIconStateful</p>
+
+            <lightning:buttonIconStateful iconName="utility:like"
+                                          selected="{!v.liked}"
+                                          alternativeText="Like"
+                                          onclick="{! c.handleLikedToggle }"/>
+            <lightning:badge label="{!v.numClicks}" />
+
+
+            <!-- buttonGroup -->
+            <hr/>
+            <h4>lightning:buttonGroup</h4>
+            <lightning:buttonGroup >
+                <lightning:button label="Donkey"  aura:id="donkey"  variant="brand" onclick="{!c.showLove}"/>
+                <lightning:button label="Donkey-2"  aura:id="baby-donkey-1"  onclick="{!c.showLove}"/>
+                <lightning:button label="Cow"     aura:id="cow"     onclick="{!c.showLove}"/>
+                <lightning:button label="Mule"    aura:id="mule"    onclick="{!c.showLove}"/>
+                <lightning:button label="Horse"   aura:id="horse"   onclick="{!c.showLove}"/>
+                <lightning:button label="Goat-1"  aura:id="goat-1"  onclick="{!c.showLove}"/>
+                <lightning:button label="Goat-2"  aura:id="goat-2"  onclick="{!c.showLove}"/>
+                <lightning:button label="Peacock" aura:id="peacock-1"  onclick="{!c.showLove}"/>
+                <lightning:buttonIcon iconName="utility:close"
+                                      aura:id="donkey"
+                                      variant="brand"
+                                      onclick="{! c.showLove }"
+                                      alternativeText="Show Donkey please!" />
+            </lightning:buttonGroup>
+            <br/>
+
+            <img src="{!v.imgsrc}"/>
+        </p>
+    </lightning:card>
+
+    <!-- ligthning:accoridion:
+      https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/aura_compref_lightning_accordion.htm
+     -->
+
+    <hr/>
+    <h3>ligthning:accoridion: Great Composers</h3>
+    <lightning:accordion activeSectionName="C">
+
+        <lightning:accordionSection name="A" label="Beethoven">
+            <img width="400" src="https://raw.githubusercontent.com/mohan-chinnappan-n/lex-book-code-samples/master/Greeter-2/img/beethoven-1.png"/>
+        </lightning:accordionSection>
+
+        <lightning:accordionSection name="B" label="Mozart">
+            <img width="400" src="https://raw.githubusercontent.com/mohan-chinnappan-n/lex-book-code-samples/master/Greeter-2/img/mozart-1.png"/>
+        </lightning:accordionSection>
+
+        <lightning:accordionSection name="C" label="Ilayaraaja">
+            <img width="400"
+                 src="https://raw.githubusercontent.com/mohan-chinnappan-n/lex-book-code-samples/master/Greeter-2/img/ir-1.png"/>
+        </lightning:accordionSection>
+    </lightning:accordion>
+
+    <hr/>
+
+    <h3>ligthning:avatar: Codey Bear</h3>
+    <lightning:avatar src="https://raw.githubusercontent.com/mohan-chinnappan-n/lex-book-code-samples/master/Greeter-2/img/culture-card-trailblaze-codey.png"
+                      alternativeText="Codey Bear"/>
+
+
+    <lightning:avatar src="NA" fallbackIconName="standard:campaign" alternativeText="Campaign"/>
+    <lightning:avatar src="NA" fallbackIconName="standard:lead" alternativeText="Lead"/>
+    <lightning:avatar src="NA" fallbackIconName="standard:opportunity" alternativeText="Opportunity"/>
+    <lightning:avatar src="NA" fallbackIconName="standard:account" alternativeText="Account"/>
+    <lightning:avatar src="NA" fallbackIconName="standard:contact" alternativeText="Contact"/>
+    <lightning:avatar src="NA" fallbackIconName="standard:case" alternativeText="Case"/>
+
+
+
+    <!-- carousel -->
+    <h3>ligthning:carousel: Great Farmers</h3>
+    <lightning:carousel >
+        <lightning:carouselImage src="https://raw.githubusercontent.com/mohan-chinnappan-n/lex-book-code-samples/master/Greeter-2/img/nammallvar-1.png"
+                                 header=" Nammalvar"
+                                 description="Green crusader, agricultural scientist, environmental activist, philosopher and organic farming expert celebrated for his works on spreading Ecological farming and Organic farming."
+                                 alternativeText="This is a card">
+        </lightning:carouselImage>
+        <lightning:carouselImage src="https://raw.githubusercontent.com/mohan-chinnappan-n/lex-book-code-samples/master/Greeter-2/img/MasanobuFukuoka-2.png"
+                                 header="Masanobu Fukuoka"
+                                 description=" Japanese farmer and philosopher celebrated for his natural farming and re-vegetation of desertified lands."
+                                 alternativeText="This is a card">
+        </lightning:carouselImage>
+        <lightning:carouselImage src="https://raw.githubusercontent.com/mohan-chinnappan-n/lex-book-code-samples/master/Greeter-2/img/SubhashPalekar-3.png"
+                                 header="Subhash Palekar"
+                                 description="Practiced and wrote many books about Zero Budget Natural Farming."
+                                 alternativeText="This is a card">
+        </lightning:carouselImage>
+    </lightning:carousel>
+
+
+
+    <!-- breadcrumbs -->
+    <h3>ligthning:breadcrumbs: Account and Case</h3>
+    <lightning:breadcrumbs >
+        <lightning:breadcrumb label="Parent Account" href="https://mohansun-59-dev-ed.lightning.force.com/one/one.app#/sObject/001f400000M8biiAAB/view"/>
+        <lightning:breadcrumb label="Case" href="https://mohansun-59-dev-ed.lightning.force.com/one/one.app#/sObject/500f40000052e4SAAQ/view"/>
+    </lightning:breadcrumbs>
+
+
+
+    <!-- checkboxGroup -->
+    <hr/>
+    <h4>CheckboxGroup</h4>
+
+    <aura:attribute name="options" type="List" default="[
+                                                        {'label': 'Farming', 'value': 'Farming'},
+                                                        {'label': 'Weaving', 'value': 'Weaving'},
+                                                        {'label': 'Carpentry', 'value': 'Carpentry'}
+
+                                                        ]"/>
+    <aura:attribute name="value" type="List" default="Farming"/>
+
+    <lightning:checkboxGroup aura:id="myProfessions"
+                             name="checkboxGroup"
+                             label="Select Professions You Like:"
+                             options="{! v.options }"
+                             value="{! v.value }"
+                             onchange="{! c.handleCheckBoxGroupChange }"
+                             required="true" />
+
+
+    <!-- datatable -->
+    <hr/>
+    <h3>datatable</h3>
+
+    <aura:attribute name="mydata" type="Object"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <!-- see cmpInit -->
+    <lightning:datatable data="{! v.mydata }"
+                         columns="{! v.mycolumns }"
+                         keyField="id"
+                         onrowselection="{! c.getSelectedName }"/>
+
+
+    <!-- datatable
+
+    https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/aura_compref_lightning_fileCard.htm?search_text=toast
+   -->
+    <hr/>
+    <h3>fileCard</h3>
+    <!--
+     <lightning:fileCard fileId="069f4000002B4BE"/>
+     -->
+
+
+    <h4>dynamicIcon: ellie, eq, score, strength, trend, and waffle</h4>
+    ellie: <lightning:dynamicIcon type="ellie" aura:id="ellie"
+                                  alternativeText="Your calculation is running."
+                                  onclick="{!c.handleDynaicIcon}"/><br/>
+    eq: <lightning:dynamicIcon type="eq"  aura:id="eq"
+                               alternativeText="Your calculation is running."
+                               onclick="{!c.handleDynaicIcon}"/><br/>
+    score: <lightning:dynamicIcon type="score"  aura:id="score"
+                                  alternativeText="Your calculation is running."
+                                  onclick="{!c.handleDynaicIcon}"/><br/>
+    trend: <lightning:dynamicIcon type="trend"  aura:id="trend" option="up"
+                                  alternativeText="Your calculation is running."
+                                  onclick="{!c.handleDynaicIcon}"/><br/>
+    strength: <lightning:dynamicIcon type="strength" aura:id="strength" option="-3"
+                                     alternativeText="Your calculation is running."
+                                     onclick="{!c.handleDynaicIcon}"/><br/>
+    waffle: <lightning:dynamicIcon type="waffle" aura:id="waffle"
+                                   alternativeText="Your calculation is running."
+                                   onclick="{!c.handleDynaicIcon}"/><br/>
+
+
+
+    <h4>Click to Dial</h4>
+
+    <lightning:clickToDial value="14155555551" title="Click to dial this number"/><br/>
+    <lightning:clickToDial value="14155555552" recordId="5003000000D9duF"/><br/>
+    <lightning:clickToDial value="14155555553" recordId="5003000000D8cuI" params="accountSid=xxx, sourceId=xxx, apiVersion=123"/><br/>
+
+
+    <h4>combobox</h4>
+    <aura:attribute name="cbstatusOptions" type="List" default="[]"/>
+    <!-- see cmpInit -->
+
+    <lightning:combobox aura:id="cbselectItem" name="status" label="Status"
+                        placeholder="Choose Status"
+                        value="new"
+                        onchange="{!c.handleCBOptionSelected}"
+                        options="{!v.cbstatusOptions}"/>
+
+
+
+</aura:component>
